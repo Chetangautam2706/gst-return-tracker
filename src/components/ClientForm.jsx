@@ -25,7 +25,9 @@ function ClientForm() {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/clients");
+      const res = await axios.get(
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
+      );
       setClients(res.data);
     } catch (error) {
       console.log(error);
@@ -40,7 +42,10 @@ function ClientForm() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/clients", formData);
+      await axios.post(
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
+        formData,
+      );
 
       setFormData({
         clientName: "",

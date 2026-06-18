@@ -10,7 +10,9 @@ const GSTR3BTable = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/gstr3b");
+      const res = await axios.get(
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/gstr3b",
+      );
       console.log("GSTR3B DATA:", res.data);
       setData(res.data || []);
     } catch (err) {

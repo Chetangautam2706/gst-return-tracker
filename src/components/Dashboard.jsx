@@ -183,7 +183,7 @@ function Dashboard({ setIsLoggedIn }) {
     try {
       if (editIndex !== null) {
         await axios.put(
-          `http://localhost:5000/api/clients/${clients[editIndex]._id}`,
+          `https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients/${clients[editIndex]._id}`,
           newClient,
         );
 
@@ -194,7 +194,10 @@ function Dashboard({ setIsLoggedIn }) {
 
         setEditIndex(null);
       } else {
-        await axios.post("http://localhost:5000/api/clients/add", newClient);
+        await axios.post(
+          "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients/add",
+          newClient,
+        );
 
         fetchClients();
         fetchDashboardStats();
@@ -218,7 +221,9 @@ function Dashboard({ setIsLoggedIn }) {
   };
   const deleteClient = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await axios.delete(
+        `https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients/${id}`,
+      );
 
       fetchClients();
       fetchDashboardStats();
@@ -247,7 +252,8 @@ function Dashboard({ setIsLoggedIn }) {
   const fetchClients = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/clients?t=" + Date.now(),
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients?t=" +
+          Date.now(),
       );
 
       console.log(res.data);
@@ -260,7 +266,9 @@ function Dashboard({ setIsLoggedIn }) {
 
   const fetchDashboardStats = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/dashboard/stats");
+      const res = await axios.get(
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/dashboard/stats",
+      );
 
       setDashboardStats(res.data);
     } catch (error) {
@@ -271,7 +279,7 @@ function Dashboard({ setIsLoggedIn }) {
   const searchStatus = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/returns/search?clientName=${clientName}&month=${month}`,
+        `https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/returns/search?clientName=${clientName}&month=${month}`,
       );
 
       setSearchResult(res.data);

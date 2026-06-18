@@ -27,7 +27,9 @@ function Reports() {
 
   const fetchDashboardStats = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/dashboard/stats");
+      const res = await axios.get(
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/dashboard/stats",
+      );
 
       setDashboardStats(res.data);
     } catch (error) {
@@ -37,7 +39,9 @@ function Reports() {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/clients");
+      const res = await axios.get(
+        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
+      );
 
       setClients(res.data);
     } catch (error) {
