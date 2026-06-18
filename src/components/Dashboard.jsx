@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
@@ -268,7 +268,7 @@ function Dashboard({ setIsLoggedIn }) {
     }
   };
 
-  const searchStatus = async () => {
+  const searchStatus = useCallback(async () => {
     try {
       const res = await axios.get(
         `http://localhost:5000/api/returns/search?clientName=${clientName}&month=${month}`,
@@ -278,7 +278,7 @@ function Dashboard({ setIsLoggedIn }) {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [clientName, month]);
 
   useEffect(() => {
     const load = () => {
@@ -295,7 +295,7 @@ function Dashboard({ setIsLoggedIn }) {
       return;
     }
     searchStatus();
-  }, [clientName, month]);
+  }, [clientName, month, searchStatus]);
 
   return (
     <div className="dashboard">
