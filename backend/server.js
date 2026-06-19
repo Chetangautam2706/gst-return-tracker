@@ -7,7 +7,9 @@ import dashboardRoutes from "./routes/dashboardRoutes.js";
 import returnRoutes from "./routes/returnRoutes.js";
 import gstr1Routes from "./routes/gstr1Routes.js";
 import gstr3bRoutes from "./routes/gstr3bRoutes.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 
 app.use(cors());
@@ -23,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/visitor-management")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
