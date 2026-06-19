@@ -5,12 +5,13 @@ import {
   updateClient,
   deleteClient,
 } from "../controllers/clientController.js";
+import verifyFirebase from "../middleware/verifyFirebase.js";
 
 const router = express.Router();
 
-router.post("/add", addClient);
-router.get("/", getClients);
-router.put("/:id", updateClient);
-router.delete("/:id", deleteClient);
+router.post("/clients", verifyFirebase, addClient);
+router.get("/clients", verifyFirebase, getClients);
+router.put("/clients/:id", verifyFirebase, updateClient);
+router.delete("/clients/:id", verifyFirebase, deleteClient);
 
 export default router;

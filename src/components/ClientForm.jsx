@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Dashboard.css";
+import { getAuth } from "firebase/auth";
 
 function ClientForm() {
   const [formData, setFormData] = useState({
@@ -25,12 +26,22 @@ function ClientForm() {
 
   const fetchClients = async () => {
     try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      const token = user ? await user.getIdToken() : null;
+
       const res = await axios.get(
         "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       setClients(res.data);
     } catch (error) {
-      console.log(error);
+      console.log("Fetch error:", error);
     }
   };
 
@@ -42,9 +53,24 @@ function ClientForm() {
     e.preventDefault();
 
     try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.log("User not logged in");
+        return;
+      }
+
+      const token = await user.getIdToken();
+
       await axios.post(
         "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
         formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
 
       setFormData({
@@ -60,7 +86,7 @@ function ClientForm() {
 
       fetchClients();
     } catch (error) {
-      console.log(error);
+      console.log("Add client error:", error);
     }
   };
 
