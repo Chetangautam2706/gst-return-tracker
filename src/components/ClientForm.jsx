@@ -32,7 +32,7 @@ function ClientForm() {
       const token = user ? await user.getIdToken() : null;
 
       const res = await axios.get(
-        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
+        "https://gst-return-tracker.onrender.com/api/clients",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ function ClientForm() {
       const token = await user.getIdToken();
 
       await axios.post(
-        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients",
+        "https://gst-return-tracker.onrender.com/api/clients",
         formData,
         {
           headers: {

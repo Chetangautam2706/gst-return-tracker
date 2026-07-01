@@ -183,7 +183,7 @@ function Dashboard({ setIsLoggedIn }) {
     try {
       if (editIndex !== null) {
         await axios.put(
-          `https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients/${clients[editIndex]._id}`,
+          `https://gst-return-tracker.onrender.com/api/clients/${clients[editIndex]._id}`,
           newClient,
         );
 
@@ -195,7 +195,7 @@ function Dashboard({ setIsLoggedIn }) {
         setEditIndex(null);
       } else {
         await axios.post(
-          "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients/add",
+          "https://gst-return-tracker.onrender.com/api/clients/add",
           newClient,
         );
 
@@ -222,7 +222,7 @@ function Dashboard({ setIsLoggedIn }) {
   const deleteClient = async (id) => {
     try {
       await axios.delete(
-        `https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients/${id}`,
+        `https://gst-return-tracker.onrender.com/api/clients/${id}`,
       );
 
       fetchClients();
@@ -252,8 +252,7 @@ function Dashboard({ setIsLoggedIn }) {
   const fetchClients = async () => {
     try {
       const res = await axios.get(
-        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/clients?t=" +
-          Date.now(),
+        "https://gst-return-tracker.onrender.com/api/clients?t=" + Date.now(),
       );
 
       console.log(res.data);
@@ -267,7 +266,7 @@ function Dashboard({ setIsLoggedIn }) {
   const fetchDashboardStats = async () => {
     try {
       const res = await axios.get(
-        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/dashboard/stats",
+        "https://gst-return-tracker.onrender.com/api/dashboard/stats",
       );
 
       setDashboardStats(res.data);
@@ -279,7 +278,7 @@ function Dashboard({ setIsLoggedIn }) {
   const searchStatus = useCallback(async () => {
     try {
       const res = await axios.get(
-        `https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/returns/search?clientName=${clientName}&month=${month}`,
+        `https://gst-return-tracker.onrender.com/api/returns/search?clientName=${clientName}&month=${month}`,
       );
 
       setSearchResult(res.data);

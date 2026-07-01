@@ -11,7 +11,7 @@ const GSTR1Table = () => {
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        "https://gst-return-tracker-531mzty36-chetangautam2706s-projects.vercel.app/api/gstr1",
+        "https://gst-return-tracker.onrender.com/api/gstr1",
       );
       console.log(res.data);
       setData(res.data);
