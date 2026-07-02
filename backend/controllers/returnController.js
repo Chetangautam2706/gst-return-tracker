@@ -25,6 +25,7 @@ export const getGSTR1Returns = async (req, res) => {
 
     res.json(updatedReturns);
   } catch (error) {
+    console.error("Return Search Error:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -54,6 +55,7 @@ export const getGSTR3BReturns = async (req, res) => {
 
     res.json(updatedReturns);
   } catch (error) {
+    console.error("Return Search Error:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -77,6 +79,7 @@ export const updateReturnStatus = async (req, res) => {
       data: updatedReturn,
     });
   } catch (error) {
+    console.error("Return Search Error:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -125,6 +128,7 @@ export const searchReturnStatus = async (req, res) => {
 
     res.json(result);
   } catch (error) {
+    console.error("Return Search Error:", error);
     res.status(500).json({
       message: error.message,
     });
